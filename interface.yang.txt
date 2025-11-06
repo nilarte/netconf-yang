@@ -1,0 +1,20 @@
+module interface {
+    namespace "http://example.com/interface";
+    prefix if;
+    
+    container interfaces {
+        list interface {
+            key name;
+            leaf name {
+                type string;
+            }
+            leaf ip-address {
+                type string;
+            }
+            leaf enabled {
+                type boolean;
+                default true;
+            }
+        }
+    }
+}
