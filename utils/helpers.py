@@ -21,3 +21,4 @@ def append_to_file(filename, text):
     """Append text content to a file."""
     with open(filename, 'a') as f:
         f.write(text)
+    print(f"Appended to file: {filename}")
