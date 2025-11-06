@@ -2,6 +2,8 @@
 
 A collection of representative Python scripts demonstrating NETCONF and YANG operations for network automation. These scripts provide practical examples for interacting with network devices using model-driven programmability.
 
+**🚀 [Quick Start Guide](QUICKSTART.md)** - Get started in 5 minutes!
+
 ## Overview
 
 This repository contains example scripts for:
@@ -245,7 +247,7 @@ Contributions are welcome! Please feel free to submit issues or pull requests.
 
 ## License
 
-This project is provided as-is for educational and demonstration purposes.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Additional Resources
 
