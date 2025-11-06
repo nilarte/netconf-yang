@@ -92,6 +92,28 @@ Filter operational data:
 python get_operational.py --filter "/interfaces/interface[name='GigabitEthernet1']"
 ```
 
+#### Use Advanced Filtering
+Filter data using subtree or XPath filters:
+
+```bash
+python get_filtered.py --preset interfaces
+python get_filtered.py --xpath "/interfaces/interface[name='GigabitEthernet1']"
+```
+
+#### Safe Configuration with Commit
+Use the recommended lock-edit-commit-unlock pattern:
+
+```bash
+python safe_commit.py ../yang-models/interface_config.xml
+```
+
+#### Complete Workflow
+Run a complete automation workflow with backup and verification:
+
+```bash
+python complete_workflow.py ../yang-models/interface_config.xml
+```
+
 ### RESTCONF Examples
 
 #### Get Data via RESTCONF
@@ -107,6 +129,18 @@ Save output to file:
 python restconf_get.py /data/ietf-interfaces:interfaces --output interfaces.json
 ```
 
+#### Send Configuration via RESTCONF
+Create or modify configuration using RESTCONF POST/PUT:
+
+```bash
+python restconf_post.py /data/ietf-interfaces:interfaces ../yang-models/interface_config.json
+```
+
+Replace existing configuration:
+```bash
+python restconf_post.py /data/ietf-interfaces:interfaces/interface=GigabitEthernet2 ../yang-models/interface_config.json --method PUT
+```
+
 ## Project Structure
 
 ```
@@ -120,14 +154,22 @@ netconf-yang/
 │   └── helpers.py               # Helper functions
 ├── examples/
 │   ├── netconf-basic/           # Basic NETCONF operations
+│   │   ├── README.md
 │   │   ├── get_capabilities.py # Get device capabilities
 │   │   ├── get_config.py       # Retrieve configuration
+│   │   ├── get_operational.py  # Get operational data
+│   │   ├── get_filtered.py     # Advanced filtering examples
 │   │   ├── edit_config.py      # Modify configuration
-│   │   └── get_operational.py  # Get operational data
+│   │   ├── safe_commit.py      # Safe config with lock-commit
+│   │   └── complete_workflow.py # Full automation workflow
 │   ├── restconf/                # RESTCONF examples
-│   │   └── restconf_get.py     # GET data via RESTCONF
+│   │   ├── README.md
+│   │   ├── restconf_get.py     # GET data via RESTCONF
+│   │   └── restconf_post.py    # POST/PUT via RESTCONF
 │   └── yang-models/             # Sample YANG-based configs
-│       ├── interface_config.xml # Interface configuration
+│       ├── README.md
+│       ├── interface_config.xml # Interface configuration (XML)
+│       ├── interface_config.json # Interface configuration (JSON)
 │       └── loopback_config.xml  # Loopback configuration
 ```
 

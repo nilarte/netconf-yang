@@ -13,6 +13,15 @@ python restconf_get.py /data/ietf-interfaces:interfaces --host 192.168.1.1
 python restconf_get.py /data/ietf-interfaces:interfaces --output interfaces.json
 ```
 
+### restconf_post.py
+Sends configuration data to a device using RESTCONF POST or PUT requests.
+
+**Usage:**
+```bash
+python restconf_post.py /data/ietf-interfaces:interfaces ../yang-models/interface_config.json
+python restconf_post.py /data/ietf-interfaces:interfaces/interface=eth0 config.json --method PUT
+```
+
 **Common RESTCONF Paths:**
 - `/data/ietf-interfaces:interfaces` - All interfaces
 - `/data/ietf-interfaces:interfaces/interface=eth0` - Specific interface

@@ -40,6 +40,33 @@ python get_operational.py --output operational.xml
 python get_operational.py --filter "/interfaces-state"
 ```
 
+### get_filtered.py
+Demonstrates advanced filtering techniques (subtree and XPath) to retrieve specific data.
+
+**Usage:**
+```bash
+python get_filtered.py --preset interfaces
+python get_filtered.py --xpath "/interfaces/interface[name='eth0']"
+python get_filtered.py --operation get --preset system
+```
+
+### safe_commit.py
+Implements the recommended lock-edit-commit-unlock pattern for safe configuration changes.
+
+**Usage:**
+```bash
+python safe_commit.py ../yang-models/interface_config.xml
+```
+
+### complete_workflow.py
+Comprehensive example demonstrating a complete automation workflow including backup, apply, and verify.
+
+**Usage:**
+```bash
+python complete_workflow.py ../yang-models/interface_config.xml
+python complete_workflow.py config.xml --no-backup
+```
+
 ## Prerequisites
 
 Install required packages:

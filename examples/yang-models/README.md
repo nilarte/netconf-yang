@@ -32,6 +32,15 @@ cd ../netconf-basic
 python edit_config.py ../yang-models/loopback_config.xml
 ```
 
+### interface_config.json
+Sample JSON configuration for RESTCONF operations. Demonstrates interface configuration in JSON format.
+
+**Usage:**
+```bash
+cd ../restconf
+python restconf_post.py /data/ietf-interfaces:interfaces ../yang-models/interface_config.json
+```
+
 ## Customization
 
 Modify these XML files to match your device and requirements:
