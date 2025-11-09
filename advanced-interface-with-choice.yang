@@ -1,0 +1,53 @@
+module simple-device {
+  namespace "http://example.com/simple-device";
+  prefix "sd";
+
+  // A container that groups interface-related configuration
+  container interfaces {
+
+    // A LIST means multiple interfaces can exist
+    list interface {
+      key "name";
+
+      // Basic leaf (single value)
+      leaf name {
+        type string;
+        description "Interface name such as Gig0/1";
+      }
+
+      // Another basic leaf
+      leaf description {
+        type string;
+      }
+
+      // A leaf-list means multiple values of same type
+      leaf-list allowed-vlans {
+        type uint16;
+        description "List of VLAN IDs allowed on this interface";
+      }
+
+      // A CHOICE allows one of multiple configuration methods
+      choice ip-config {
+        description "Choose IPv4 or IPv6 configuration, but not both";
+
+        case ipv4 {
+          leaf ipv4-address {
+            type string;
+          }
+          leaf ipv4-mask {
+            type string;
+          }
+        }
+
+        case ipv6 {
+          leaf ipv6-address {
+            type string;
+          }
+          leaf ipv6-prefix-length {
+            type uint8;
+          }
+        }
+      }
+    }
+  }
+}

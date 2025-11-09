@@ -1,0 +1,21 @@
+<interfaces xmlns="http://example.com/interface">
+
+  <interface>
+    <name>Gig0/1</name>
+    <ip-address>192.168.1.10</ip-address>
+    <enabled>true</enabled>
+  </interface>
+
+  <interface>
+    <name>Gig0/2</name>
+    <ip-address>10.0.0.5</ip-address>
+    <!-- enabled omitted → defaults to true -->
+  </interface>
+
+  <interface>
+    <name>Gig0/3</name>
+    <ip-address>172.16.0.1</ip-address>
+    <enabled>false</enabled>
+  </interface>
+
+</interfaces>

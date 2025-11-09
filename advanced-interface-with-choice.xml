@@ -1,0 +1,31 @@
+<interfaces xmlns="http://example.com/simple-device">
+
+  <!-- Interface 1 -->
+  <interface>
+    <name>Gig0/1</name>
+    <description>Uplink to Router</description>
+    <allowed-vlans>10</allowed-vlans>
+    <allowed-vlans>20</allowed-vlans>
+    <ipv4-address>192.168.1.10</ipv4-address>
+    <ipv4-mask>255.255.255.0</ipv4-mask>
+  </interface>
+
+  <!-- Interface 2 -->
+  <interface>
+    <name>Gig0/2</name>
+    <description>Server Link</description>
+    <allowed-vlans>30</allowed-vlans>
+    <allowed-vlans>35</allowed-vlans>
+    <ipv6-address>2001:db8::100</ipv6-address>
+    <ipv6-prefix-length>64</ipv6-prefix-length>
+  </interface>
+
+  <!-- Interface 3 -->
+  <interface>
+    <name>Gig0/3</name>
+    <description>Management</description>
+    <allowed-vlans>99</allowed-vlans>
+    <!-- No IP chosen → device may consider it L2-only -->
+  </interface>
+
+</interfaces>
