@@ -7,10 +7,10 @@ filter = '''
 
 
 with manager.connect(
-    host="<SANDBOX IOS SERVER>",
+    host=__import__('os').environ.get('CISCO_HOST'),
     port=830,
     username="admin",
-    password="<PASSWORD>",
+    password=__import__('os').environ.get('CISCO_PASSWORD'),
     hostkey_verify=False
     ) as m:
     result = m.get(filter=filter)

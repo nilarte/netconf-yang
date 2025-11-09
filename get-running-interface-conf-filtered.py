@@ -1,15 +1,45 @@
 from ncclient import manager
 
-f_xml = """
-<filter>
-  <interface-configurations xmlns="http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg">
-    <interface-configuration/>
-  </interface-configurations>
-</filter>
-"""
+with manager.connect(
+    host=__import__('os').environ.get('CISCO_HOST'),
+    port=830,
+    username="admin",
+    password=__import__('os').environ.get('CISCO_PASSWORD'),
+    hostkey_verify=False,
+    device_params={'name': 'iosxr'},
+    allow_agent=False,
+    look_for_keys=False
+) as m:
 
-with manager.connect(host="<SANDBOX IOS SERVER>", port=830,
-                     username="admin", password="<PASSWORD>",
-                     hostkey_verify=False, allow_agent=False, look_for_keys=False) as m:
-    r = m.get_config(source="running", filter=("subtree", f_xml))
-    print(r.xml[:4000])
+    # Proper NETCONF filter wrapped in <filter> with type="subtree"
+    filter_xml = """
+    <filter xmlns="urn:ietf:params:xml:ns:netconf:base:1.0" type="subtree">
+      <interfaces xmlns="http://openconfig.net/yang/interfaces">
+        <interface>
+          <name>GigabitEthernet0/0/0/0</name>
+          <config/>
+          <state/>
+        </interface>
+      </interfaces>
+    </filter>
+    """
+
+    reply = m.get(filter_xml)
+    print(reply.xml)
+
+  # # Parse the returned XML to an Ordered Dictionary
+  # netconf_data = xmltodict.parse(reply.xml)["rpc-reply"]["data"]
+
+  # # Create a list of interfaces
+  # interfaces = netconf_data["interfaces"]["interface"]
+
+  # print("The interface status of the device is: ")
+  # # Loop over interfaces and report status
+  # for interface in interfaces:
+  #     print("Interface {} enabled status is {}".format(
+  #             interface["name"],
+  #             interface["enabled"]
+  #             )
+  #         )
+  # print("\n")
+ 

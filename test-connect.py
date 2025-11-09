@@ -1,10 +1,11 @@
 from ncclient import manager
 
 with manager.connect(
-    host="<SANDBOX IOS SERVER>",
+    # Get host from environment variable
+    host=__import__('os').environ.get('CISCO_HOST'),
     port=830,
     username="admin",
-    password="<PASSWORD>",
+    password=__import__('os').environ.get('CISCO_PASSWORD'),
     hostkey_verify=False
     ) as m:
     print("Connected OK")
