@@ -3,7 +3,7 @@ from ncclient import manager
 with manager.connect(
     # Get host from environment variable
     host=__import__('os').environ.get('CISCO_HOST'),
-    port=830,
+    port=int(__import__('os').environ.get('CISCO_PORT', 830)),
     username="admin",
     password=__import__('os').environ.get('CISCO_PASSWORD'),
     hostkey_verify=False

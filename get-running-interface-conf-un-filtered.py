@@ -1,6 +1,6 @@
 from ncclient import manager
 
-with manager.connect(host=__import__('os').environ.get('CISCO_HOST'), port=830,
+with manager.connect(host=__import__('os').environ.get('CISCO_HOST'), port=int(__import__('os').environ.get('CISCO_PORT', 830)),
                      username="admin", password=__import__('os').environ.get('CISCO_PASSWORD'),
                      hostkey_verify=False, allow_agent=False, look_for_keys=False) as m:
     r = m.get_config(source="running")
