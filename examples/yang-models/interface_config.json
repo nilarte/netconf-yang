@@ -1,0 +1,16 @@
+{
+  "ietf-interfaces:interface": {
+    "name": "GigabitEthernet2",
+    "description": "Configured via RESTCONF",
+    "type": "iana-if-type:ethernetCsmacd",
+    "enabled": true,
+    "ietf-ip:ipv4": {
+      "address": [
+        {
+          "ip": "192.168.200.1",
+          "netmask": "255.255.255.0"
+        }
+      ]
+    }
+  }
+}
